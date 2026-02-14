@@ -12,9 +12,73 @@
       href="https://fonts.googleapis.com/css2?family=Aldrich&family=Pixelify+Sans:wght@400..700&display=swap"
       rel="stylesheet"
     />
-    <title>SARAHHH!!!!</title>
+    <style>
+        :root {
+            --primary-color: #e31b6d;
+            --secondary-color: #ff99ac;
+            --accent-color: #fff0f3;
+            --text-color: #fff;
+            --bg-gradient: linear-gradient(135deg, #2e001f 0%, #680026 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-color);
+            perspective: 1000px;
+        }
+
+        /* Particle Background */
+        #particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            animation: float 10s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+    <title>SARAAHHH !!!</title>
   </head>
   <body>
+    <div id="particles"></div>
     <!-- Envelope Screen -->
     <div id="envelope-container">
       <img src="envelope.png" alt="Envelope" id="envelope" />
@@ -37,7 +101,7 @@
         </div>
 
         <p id="final-text" class="final-text" style="display: none">
-          <strong>It's A DATE THEN YAY :</strong> Pathé at 7pm shawty ;]
+          <strong>It's A DATE then YAY :</strong> Pathé at 7pm shawty (https://discord.gg/2xuJNcsz)
         </p>
       </div>
     </div>
