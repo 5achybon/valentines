@@ -1,110 +1,173 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="valentines.css" />
-    <title>Valentine Letter</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <title>SARAAHHH!!!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Aldrich&family=Pixelify+Sans:wght@400..700&display=swap"
-      rel="stylesheet"
-    />
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+    }
 
-    <style>
-      /* Particle Background */
-      #particles {
-        position: fixed; /* changed from absolute */
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        pointer-events: none;
+    /* ---------------- PARTICLES ---------------- */
+
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      animation: float linear forwards;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
       }
-
-      .particle {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.5);
-        animation: float 10s infinite linear;
+      50% {
+        opacity: 0.8;
       }
-
-      @keyframes float {
-        0% {
-          transform: translateY(100vh) scale(0);
-          opacity: 0;
-        }
-
-        50% {
-          opacity: 0.8;
-        }
-
-        100% {
-          transform: translateY(-10vh) scale(1);
-          opacity: 0;
-        }
+      100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
       }
-    </style>
+    }
 
-    <title>dude!!!</title>
-  </head>
+    /* ---------------- LAYERS ---------------- */
 
-  <body>
-    <div id="particles"></div>
+    #envelope-container,
+    #letter-container {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-    <!-- Envelope Screen -->
-    <div id="envelope-container">
-      <img src="envelope.png" alt="Envelope" id="envelope" />
-      <h1 id="envelope-text">This for you bbg </h1>
-    </div>
+    #letter-container {
+      display: none;
+    }
 
-    <!-- Particle Script -->
-    <script>
-      const particlesContainer = document.getElementById("particles");
+    #envelope {
+      width: 200px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
 
-      function createParticle() {
-        const particle = document.createElement("div");
-        particle.classList.add("particle");
+    #envelope:hover {
+      transform: scale(1.1);
+    }
 
-        const size = Math.random() * 6 + 4;
-        particle.style.width = size + "px";
-        particle.style.height = size + "px";
+    /* ---------------- LETTER ---------------- */
 
-        particle.style.left = Math.random() * 100 + "vw";
-        particle.style.animationDuration = Math.random() * 5 + 5 + "s";
+    .buttons {
+      margin-top: 20px;
+    }
 
-        particlesContainer.appendChild(particle);
+    .btn {
+      width: 120px;
+      cursor: pointer;
+      margin: 10px;
+      transition: transform 0.3s ease;
+    }
 
-        setTimeout(() => {
-          particle.remove();
-        }, 10000);
-      }
+    .final-text {
+      margin-top: 20px;
+      font-size: 24px;
+      display: none;
+    }
+  </style>
+</head>
 
-      setInterval(createParticle, 300);
-    </script>
-    <!-- Letter Screen -->
-    <div id="letter-container">
-      <div class="letter-window">
-        <h1 id="letter-title">aha Will you be my Valentine?(question rhétorique)</h1>
+<body>
 
-        <img src="cat_heart.gif" class="cat" id="letter-cat" />
+  <div id="particles"></div>
 
-        <div class="buttons" id="letter-buttons">
-          <img src="yes.png" class="btn yes-btn" alt="Yes" />
+  <!-- Envelope Screen -->
+  <div id="envelope-container">
+    <img src="envelope.png" alt="Envelope" id="envelope" />
+    <h1>This for you bbg</h1>
+  </div>
 
-          <div class="no-wrapper">
-            <img src="no.png" class="btn no-btn" alt="No" />
-          </div>
-        </div>
+  <!-- Letter Screen -->
+  <div id="letter-container">
+    <div class="letter-window">
+      <h1>question</h1>
 
-        <p id="final-text" class="final-text" style="display: none">
-          <strong>It's A DATE then YAY :</strong> Pathé at 7pm shawty (https://discord.gg/2xuJNcsz)
-        </p>
+      <img src="cat_heart.gif" width="200" />
+
+      <div class="buttons">
+        <img src="yes.png" class="btn yes-btn" alt="Yes" />
+        <img src="no.png" class="btn no-btn" alt="No" />
       </div>
+
+      <p id="final-text" class="final-text">
+        <strong>yes :</strong> okay
+      </p>
     </div>
-    <script src="valentines.js"></script>
-  </body>
+  </div>
+
+  <script>
+    /* ---------------- PARTICLES ---------------- */
+
+    const particlesContainer = document.getElementById("particles");
+
+    function createParticle() {
+      const particle = document.createElement("div");
+      particle.classList.add("particle");
+
+      const size = Math.random() * 6 + 4;
+      particle.style.width = size + "px";
+      particle.style.height = size + "px";
+
+      particle.style.left = Math.random() * 100 + "vw";
+      particle.style.animationDuration = Math.random() * 5 + 5 + "s";
+
+      particlesContainer.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 10000);
+    }
+
+    setInterval(createParticle, 300);
+
+    /* ---------------- PAGE LOGIC ---------------- */
+
+    const envelope = document.getElementById("envelope");
+    const envelopeContainer = document.getElementById("envelope-container");
+    const letterContainer = document.getElementById("letter-container");
+    const yesBtn = document.querySelector(".yes-btn");
+    const finalText = document.getElementById("final-text");
+
+    // Open letter when envelope clicked
+    envelope.addEventListener("click", () => {
+      envelopeContainer.style.display = "none";
+      letterContainer.style.display = "flex";
+    });
+
+    // YES button grows when clicked
+    yesBtn.addEventListener("click", () => {
+      yesBtn.style.transform = "scale(1.5)";
+      finalText.style.display = "block";
+    });
+  </script>
+
+</body>
 </html>
