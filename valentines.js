@@ -59,14 +59,14 @@ envelope.addEventListener("click", () => {
 
 // YES is clicked
 
-//yesBtn.addEventListener("click", () => {
-//    title.textContent = "Yippeeee!";
-//
-//   catImg.src = "cat_dance.gif";
-//
-  //  document.querySelector(".letter-window").classList.add("final");
+yesBtn.addEventListener("click", () => {
+    title.textContent = "Yippeeee!";
 
-    //buttons.style.display = "none";
+   catImg.src = "cat_dance.gif";
 
-    //finalText.style.display = "block";
-//});
+    document.querySelector(".letter-window").classList.add("final");
+
+    buttons.style.display = "none";
+
+    finalText.style.display = "block";
+});
